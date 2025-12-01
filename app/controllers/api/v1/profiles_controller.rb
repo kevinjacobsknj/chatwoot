@@ -64,6 +64,7 @@ class Api::V1::ProfilesController < Api::BaseController
       :display_name,
       :avatar,
       :message_signature,
+      :google_calendar_url,
       :account_id,
       ui_settings: {}
     )

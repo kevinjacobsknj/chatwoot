@@ -63,6 +63,7 @@ export default {
       displayName: '',
       email: '',
       messageSignature: '',
+      googleCalendarUrl: '',
       hotKeys: [
         {
           key: 'enter',
@@ -114,6 +115,7 @@ export default {
       this.avatarUrl = this.currentUser.avatar_url;
       this.displayName = this.currentUser.display_name;
       this.messageSignature = this.currentUser.message_signature;
+      this.googleCalendarUrl = this.currentUser.google_calendar_url || '';
     },
     async dispatchUpdate(payload, successMessage, errorMessage) {
       let alertMessage = '';
@@ -161,6 +163,19 @@ export default {
       );
       let errorMessage = this.$t(
         'PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.API_ERROR'
+      );
+
+      await this.dispatchUpdate(payload, successMessage, errorMessage);
+    },
+    async updateCalendarUrl() {
+      const payload = { google_calendar_url: this.googleCalendarUrl };
+      let successMessage = this.$t(
+        'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.API_SUCCESS',
+        'Calendar URL updated successfully'
+      );
+      let errorMessage = this.$t(
+        'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.API_ERROR',
+        'Failed to update calendar URL'
       );
 
       await this.dispatchUpdate(payload, successMessage, errorMessage);
@@ -253,6 +268,83 @@ export default {
         :message-signature="messageSignature"
         @update-signature="updateSignature"
       />
+    </FormSection>
+    <FormSection
+      :title="
+        $t(
+          'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.TITLE',
+          'Calendar Integration'
+        )
+      "
+      :description="
+        $t(
+          'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.NOTE',
+          'Connect your Google Calendar to view your schedule within Willo'
+        )
+      "
+    >
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+          <label
+            for="google-calendar-url"
+            class="text-sm font-medium text-slate-700 dark:text-slate-300"
+          >
+            {{
+              $t(
+                'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.LABEL',
+                'Google Calendar Embed URL'
+              )
+            }}
+          </label>
+          <input
+            id="google-calendar-url"
+            v-model="googleCalendarUrl"
+            type="text"
+            class="block w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-sm focus:border-woot-500 focus:ring-woot-500 sm:text-sm px-3 py-2"
+            :placeholder="
+              $t(
+                'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.PLACEHOLDER',
+                'Paste your Google Calendar public URL or embed code here'
+              )
+            "
+          />
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            {{
+              $t(
+                'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.HELP_TEXT',
+                'Get your calendar URL from'
+              )
+            }}
+            <a
+              href="https://support.google.com/calendar/answer/41207"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-woot-500 hover:text-woot-600 underline"
+            >
+              {{
+                $t(
+                  'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.HELP_LINK',
+                  'Google Calendar settings'
+                )
+              }}
+            </a>
+          </p>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-woot-500 hover:bg-woot-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-woot-500 transition-colors"
+            @click="updateCalendarUrl"
+          >
+            {{
+              $t(
+                'PROFILE_SETTINGS.FORM.CALENDAR_SECTION.SAVE_BUTTON',
+                'Save Calendar URL'
+              )
+            }}
+          </button>
+        </div>
+      </div>
     </FormSection>
     <FormSection
       :title="$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.TITLE')"

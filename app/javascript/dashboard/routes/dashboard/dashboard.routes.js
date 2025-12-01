@@ -29,6 +29,14 @@ export default {
         ...notificationRoutes,
         ...helpcenterRoutes.routes,
         ...campaignsRoutes.routes,
+        {
+          path: 'calendar',
+          name: 'calendar',
+          component: () => import('./calendar/Index.vue'),
+          meta: {
+            permissions: ['administrator', 'agent'],
+          },
+        },
       ],
     },
     {

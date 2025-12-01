@@ -95,3 +95,34 @@ unless Rails.env.production?
 
   CannedResponse.create!(account: account, short_code: 'start', content: 'Hello welcome to chatwoot.')
 end
+
+# Willo Branding Configuration
+InstallationConfig.find_or_create_by(name: 'LOGO') do |config|
+  config.value = '/brand-assets/logo.png'
+  config.locked = false
+end
+
+InstallationConfig.find_or_create_by(name: 'LOGO_DARK') do |config|
+  config.value = '/brand-assets/logo_dark.png'
+  config.locked = false
+end
+
+InstallationConfig.find_or_create_by(name: 'LOGO_THUMBNAIL') do |config|
+  config.value = '/brand-assets/logo_thumbnail.png'
+  config.locked = false
+end
+
+InstallationConfig.find_or_create_by(name: 'LOGO_THUMBNAIL_DARK') do |config|
+  config.value = '/brand-assets/logo_thumbnail_dark.png'
+  config.locked = false
+end
+
+InstallationConfig.find_or_create_by(name: 'INSTALLATION_NAME') do |config|
+  config.value = 'Willo'
+  config.locked = false
+end
+
+InstallationConfig.find_or_create_by(name: 'BRAND_NAME') do |config|
+  config.value = 'Willo'
+  config.locked = false
+end

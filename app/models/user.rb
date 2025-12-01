@@ -76,6 +76,7 @@ class User < ApplicationRecord
   # validates_uniqueness_of :email, scope: :account_id
 
   validates :email, presence: true
+  validates :google_calendar_url, format: { with: URI::DEFAULT_PARSER.make_regexp, allow_blank: true }
 
   serialize :otp_backup_codes, type: Array
 

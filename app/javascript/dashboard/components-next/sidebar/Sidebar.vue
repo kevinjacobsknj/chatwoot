@@ -137,6 +137,13 @@ const menuItems = computed(() => {
       },
     },
     {
+      name: 'Calendar',
+      label: t('SIDEBAR.CALENDAR', 'Calendar'),
+      icon: 'i-lucide-calendar',
+      to: accountScopedRoute('calendar'),
+      activeOn: ['calendar'],
+    },
+    {
       name: 'Conversation',
       label: t('SIDEBAR.CONVERSATIONS'),
       icon: 'i-lucide-message-circle',
