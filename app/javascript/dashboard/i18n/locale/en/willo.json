@@ -69,13 +69,28 @@
     },
     "DASHBOARD": {
       "TITLE": "Salon Dashboard",
-      "TOTAL_REVENUE": "Total Revenue",
-      "TOTAL_SERVICES": "Total Services",
-      "UNIQUE_CLIENTS": "Unique Clients",
-      "AVG_TICKET": "Average Ticket",
-      "REVENUE_THIS_MONTH": "Revenue This Month",
-      "TOP_SERVICES": "Top Services",
-      "LOW_STOCK": "Low Stock Alerts"
+      "DESCRIPTION": "Overview of your salon's performance and key metrics",
+      "REFRESH": "Refresh",
+      "LOAD_ERROR": "Failed to load dashboard data. Please try again.",
+      "METRICS": {
+        "TOTAL_REVENUE": "Total Revenue",
+        "REVENUE_THIS_MONTH": "This Month",
+        "TOTAL_SERVICES": "Total Services",
+        "SERVICES_THIS_MONTH": "Services This Month",
+        "UNIQUE_CLIENTS": "Unique Clients",
+        "AVG_TICKET": "Avg. Ticket"
+      },
+      "CHARTS": {
+        "REVENUE_TREND": "Revenue Trend (Last 12 Months)",
+        "TOP_SERVICES": "Top Services by Revenue",
+        "NO_DATA": "No revenue data available yet",
+        "NO_SERVICES": "No services recorded yet",
+        "APPOINTMENTS": "appointments"
+      },
+      "INVENTORY": {
+        "LOW_STOCK_ALERT": "Low Stock Alert",
+        "THRESHOLD": "Threshold: {threshold}"
+      }
     },
     "INVENTORY": {
       "TITLE": "Inventory",

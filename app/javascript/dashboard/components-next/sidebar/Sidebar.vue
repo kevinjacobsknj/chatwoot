@@ -144,6 +144,13 @@ const menuItems = computed(() => {
       activeOn: ['calendar'],
     },
     {
+      name: 'Willo',
+      label: t('SIDEBAR.WILLO_DASHBOARD', 'Salon'),
+      icon: 'i-lucide-scissors',
+      to: accountScopedRoute('willo_dashboard'),
+      activeOn: ['willo_dashboard'],
+    },
+    {
       name: 'Conversation',
       label: t('SIDEBAR.CONVERSATIONS'),
       icon: 'i-lucide-message-circle',
