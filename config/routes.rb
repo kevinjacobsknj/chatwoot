@@ -70,6 +70,26 @@ Rails.application.routes.draw do
             resources :custom_tools
             resources :documents, only: [:index, :show, :create, :destroy]
           end
+
+          # Willo salon management routes
+          namespace :willo do
+            # Contact-specific endpoints (services and preferences)
+            resources :contacts, only: [] do
+              resources :services, only: [:index, :create, :update, :destroy]
+              resource :client_preference, only: [:show, :update]
+            end
+
+            # Account-wide dashboard
+            resource :dashboard, only: [:show] do
+              get :revenue
+              get :top_services
+              get :inventory_alerts
+            end
+
+            # Inventory management
+            resources :inventory_items, only: [:index, :show, :create, :update, :destroy]
+          end
+
           resource :saml_settings, only: [:show, :create, :update, :destroy]
           resources :agent_bots, only: [:index, :create, :show, :update, :destroy] do
             delete :avatar, on: :member

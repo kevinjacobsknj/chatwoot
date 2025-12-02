@@ -13,6 +13,7 @@ import ContactNotes from 'dashboard/components-next/Contacts/ContactsSidebar/Con
 import ContactHistory from 'dashboard/components-next/Contacts/ContactsSidebar/ContactHistory.vue';
 import ContactMerge from 'dashboard/components-next/Contacts/ContactsSidebar/ContactMerge.vue';
 import ContactCustomAttributes from 'dashboard/components-next/Contacts/ContactsSidebar/ContactCustomAttributes.vue';
+import Client360Sidebar from 'dashboard/components/willo/Client360Sidebar.vue';
 
 const store = useStore();
 const route = useRoute();
@@ -38,6 +39,7 @@ const { t } = useI18n();
 
 const CONTACT_TABS_OPTIONS = [
   { key: 'ATTRIBUTES', value: 'attributes' },
+  { key: 'SALON', value: 'salon' },
   { key: 'HISTORY', value: 'history' },
   { key: 'NOTES', value: 'notes' },
   { key: 'MERGE', value: 'merge' },
@@ -90,6 +92,10 @@ const fetchAttributes = () => {
   store.dispatch('attributes/get');
 };
 
+const fetchAgents = () => {
+  store.dispatch('agents/get');
+};
+
 const toggleContactBlock = async isBlocked => {
   const ALERT_MESSAGES = {
     success: {
@@ -122,6 +128,7 @@ onMounted(() => {
   fetchContactNotes();
   fetchContactConversations();
   fetchAttributes();
+  fetchAgents();
 });
 </script>
 
@@ -168,6 +175,10 @@ onMounted(() => {
           <ContactCustomAttributes
             v-if="activeTab === 'attributes'"
             :selected-contact="selectedContact"
+          />
+          <Client360Sidebar
+            v-if="activeTab === 'salon'"
+            :contact-id="route.params.contactId"
           />
           <ContactNotes v-if="activeTab === 'notes'" />
           <ContactHistory v-if="activeTab === 'history'" />

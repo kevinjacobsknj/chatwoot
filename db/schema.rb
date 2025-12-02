@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_19_161025) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_02_000001) do
   # These extensions should be enabled to support this database
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
@@ -1216,6 +1216,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_19_161025) do
     t.integer "consumed_timestep"
     t.boolean "otp_required_for_login", default: false
     t.text "otp_backup_codes"
+    t.string "google_calendar_url"
     t.index ["email"], name: "index_users_on_email"
     t.index ["otp_required_for_login"], name: "index_users_on_otp_required_for_login"
     t.index ["otp_secret"], name: "index_users_on_otp_secret", unique: true
@@ -1234,6 +1235,68 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_19_161025) do
     t.jsonb "subscriptions", default: ["conversation_status_changed", "conversation_updated", "conversation_created", "contact_created", "contact_updated", "message_created", "message_updated", "webwidget_triggered"]
     t.string "name"
     t.index ["account_id", "url"], name: "index_webhooks_on_account_id_and_url", unique: true
+  end
+
+  create_table "willo_client_preferences", force: :cascade do |t|
+    t.bigint "contact_id", null: false
+    t.bigint "account_id", null: false
+    t.text "color_formula"
+    t.text "allergies"
+    t.bigint "preferred_stylist_id"
+    t.text "preferred_products", default: [], array: true
+    t.text "service_notes"
+    t.datetime "last_service_date", precision: nil
+    t.decimal "total_lifetime_spending", precision: 10, scale: 2, default: "0.0"
+    t.integer "visit_count", default: 0
+    t.decimal "average_ticket", precision: 10, scale: 2, default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_willo_client_preferences_on_account_id"
+    t.index ["contact_id", "account_id"], name: "idx_willo_client_prefs_contact_account", unique: true
+    t.index ["contact_id"], name: "index_willo_client_preferences_on_contact_id"
+    t.index ["preferred_stylist_id"], name: "index_willo_client_preferences_on_preferred_stylist_id"
+  end
+
+  create_table "willo_inventory", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "product_name", null: false
+    t.string "product_category", limit: 100
+    t.integer "current_stock", default: 0
+    t.integer "reorder_threshold", default: 5
+    t.decimal "unit_cost", precision: 10, scale: 2
+    t.string "supplier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "product_name"], name: "idx_willo_inventory_account_product"
+    t.index ["account_id"], name: "index_willo_inventory_on_account_id"
+  end
+
+  create_table "willo_service_products", force: :cascade do |t|
+    t.bigint "willo_service_id", null: false
+    t.bigint "willo_inventory_item_id", null: false
+    t.decimal "quantity_used", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["willo_inventory_item_id"], name: "index_willo_service_products_on_willo_inventory_item_id"
+    t.index ["willo_service_id"], name: "index_willo_service_products_on_willo_service_id"
+  end
+
+  create_table "willo_services", force: :cascade do |t|
+    t.bigint "contact_id", null: false
+    t.bigint "account_id", null: false
+    t.string "service_name", null: false
+    t.string "service_category", limit: 100
+    t.integer "duration_minutes"
+    t.decimal "price", precision: 10, scale: 2
+    t.bigint "stylist_id"
+    t.datetime "appointment_date", precision: nil, null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_willo_services_on_account_id"
+    t.index ["appointment_date"], name: "idx_willo_services_date"
+    t.index ["contact_id"], name: "index_willo_services_on_contact_id"
+    t.index ["stylist_id"], name: "index_willo_services_on_stylist_id"
   end
 
   create_table "working_hours", force: :cascade do |t|
@@ -1255,6 +1318,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_19_161025) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "inboxes", "portals"
+  add_foreign_key "willo_client_preferences", "accounts", on_delete: :cascade
+  add_foreign_key "willo_client_preferences", "contacts", on_delete: :cascade
+  add_foreign_key "willo_client_preferences", "users", column: "preferred_stylist_id"
+  add_foreign_key "willo_inventory", "accounts", on_delete: :cascade
+  add_foreign_key "willo_service_products", "willo_inventory", column: "willo_inventory_item_id", on_delete: :cascade
+  add_foreign_key "willo_service_products", "willo_services", on_delete: :cascade
+  add_foreign_key "willo_services", "accounts", on_delete: :cascade
+  add_foreign_key "willo_services", "contacts", on_delete: :cascade
+  add_foreign_key "willo_services", "users", column: "stylist_id"
   create_trigger("accounts_after_insert_row_tr", :generated => true, :compatibility => 1).
       on("accounts").
       after(:insert).

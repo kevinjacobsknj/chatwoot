@@ -1,0 +1,90 @@
+{
+  "WILLO": {
+    "COMMON": {
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "DELETE": "Delete",
+      "EDIT": "Edit"
+    },
+    "CLIENT_METRICS": {
+      "TITLE": "Client Metrics",
+      "LIFETIME_VALUE": "Lifetime Value",
+      "VISITS": "Total Visits",
+      "AVG_TICKET": "Avg. Ticket",
+      "LAST_VISIT": "Last Visit"
+    },
+    "PREFERENCES": {
+      "TITLE": "Salon Preferences",
+      "EDIT_TITLE": "Edit Client Preferences",
+      "COLOR_FORMULA": "Color Formula",
+      "ALLERGIES": "Allergies & Sensitivities",
+      "SERVICE_NOTES": "Service Notes",
+      "PREFERRED_PRODUCTS": "Preferred Products",
+      "EMPTY_STATE": "No preferences recorded yet. Click the edit button to add client preferences.",
+      "UPDATE_SUCCESS": "Client preferences updated successfully",
+      "UPDATE_ERROR": "Failed to update preferences. Please try again.",
+      "FORM": {
+        "COLOR_FORMULA": "Color Formula",
+        "COLOR_FORMULA_PLACEHOLDER": "e.g., Wella 7N + 20vol, processed 30 min",
+        "COLOR_FORMULA_HINT": "Record the exact color formula used for this client",
+        "ALLERGIES": "Allergies & Sensitivities",
+        "ALLERGIES_PLACEHOLDER": "e.g., PPD allergy, sensitive scalp",
+        "ALLERGIES_HINT": "Important: This information is highlighted for safety",
+        "PREFERRED_PRODUCTS": "Preferred Products",
+        "PREFERRED_PRODUCTS_PLACEHOLDER": "e.g., Olaplex, Kerastase, Redken",
+        "PREFERRED_PRODUCTS_HINT": "Separate multiple products with commas",
+        "SERVICE_NOTES": "Service Notes",
+        "SERVICE_NOTES_PLACEHOLDER": "Any special notes about this client's preferences, styling habits, etc.",
+        "SAVE": "Save Preferences"
+      }
+    },
+    "SERVICES": {
+      "TITLE": "Service History",
+      "ADD": "Add Service",
+      "ADD_TITLE": "Add New Service",
+      "QUICK_SELECT": "Quick Select",
+      "EMPTY_STATE": "No services recorded yet. Click 'Add Service' to record the first appointment.",
+      "CREATE_SUCCESS": "Service added successfully",
+      "CREATE_ERROR": "Failed to add service. Please try again.",
+      "CATEGORIES": {
+        "COLOR": "Color",
+        "CUT": "Cut",
+        "STYLE": "Style",
+        "TREATMENT": "Treatment"
+      },
+      "FORM": {
+        "NAME": "Service Name",
+        "NAME_PLACEHOLDER": "e.g., Full Color, Haircut, Balayage",
+        "CATEGORY": "Category",
+        "SELECT_CATEGORY": "Select a category",
+        "PRICE": "Price ($)",
+        "DURATION": "Duration (min)",
+        "DATE": "Appointment Date & Time",
+        "STYLIST": "Stylist",
+        "SELECT_STYLIST": "Select a stylist",
+        "NOTES": "Notes",
+        "NOTES_PLACEHOLDER": "Any notes about this service...",
+        "SAVE": "Add Service"
+      }
+    },
+    "DASHBOARD": {
+      "TITLE": "Salon Dashboard",
+      "TOTAL_REVENUE": "Total Revenue",
+      "TOTAL_SERVICES": "Total Services",
+      "UNIQUE_CLIENTS": "Unique Clients",
+      "AVG_TICKET": "Average Ticket",
+      "REVENUE_THIS_MONTH": "Revenue This Month",
+      "TOP_SERVICES": "Top Services",
+      "LOW_STOCK": "Low Stock Alerts"
+    },
+    "INVENTORY": {
+      "TITLE": "Inventory",
+      "ADD": "Add Item",
+      "LOW_STOCK": "Low Stock",
+      "IN_STOCK": "In Stock"
+    },
+    "TAB": {
+      "LABEL": "Salon"
+    }
+  }
+}

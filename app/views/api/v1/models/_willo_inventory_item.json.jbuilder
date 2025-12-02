@@ -1,0 +1,11 @@
+json.id resource.id
+json.product_name resource.product_name
+json.product_category resource.product_category
+json.current_stock resource.current_stock
+json.reorder_threshold resource.reorder_threshold
+json.unit_cost resource.unit_cost.to_f
+json.supplier resource.supplier
+json.low_stock resource.low_stock?
+json.account_id resource.account_id
+json.created_at resource.created_at.to_i
+json.updated_at resource.updated_at.to_i

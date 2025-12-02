@@ -98,6 +98,9 @@ class Account < ApplicationRecord
   has_many :webhooks, dependent: :destroy_async
   has_many :whatsapp_channels, dependent: :destroy_async, class_name: '::Channel::Whatsapp'
   has_many :working_hours, dependent: :destroy_async
+  has_many :willo_services, class_name: 'Willo::Service', dependent: :destroy_async
+  has_many :willo_client_preferences, class_name: 'Willo::ClientPreference', dependent: :destroy_async
+  has_many :willo_inventory_items, class_name: 'Willo::InventoryItem', dependent: :destroy_async
 
   has_one_attached :contacts_export
 

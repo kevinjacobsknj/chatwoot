@@ -501,7 +501,8 @@
         "ATTRIBUTES": "Attributes",
         "HISTORY": "History",
         "NOTES": "Notes",
-        "MERGE": "Merge"
+        "MERGE": "Merge",
+        "SALON": "Salon"
       },
       "HISTORY": {
         "EMPTY_STATE": "There are no previous conversations associated to this contact"
