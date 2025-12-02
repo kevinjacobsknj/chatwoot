@@ -126,3 +126,16 @@ InstallationConfig.find_or_create_by(name: 'BRAND_NAME') do |config|
   config.value = 'Willo'
   config.locked = false
 end
+
+# Enable Captain features by default for all accounts
+InstallationConfig.find_or_create_by(name: 'ACCOUNT_LEVEL_FEATURE_DEFAULTS') do |config|
+  config.value = [
+    { name: 'captain_integration', enabled: true },
+    { name: 'captain_integration_v2', enabled: true },
+    { name: 'disable_branding', enabled: true },
+    { name: 'audit_logs', enabled: true },
+    { name: 'sla', enabled: true },
+    { name: 'custom_roles', enabled: true }
+  ]
+  config.locked = false
+end
