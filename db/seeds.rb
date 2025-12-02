@@ -127,15 +127,12 @@ InstallationConfig.find_or_create_by(name: 'BRAND_NAME') do |config|
   config.locked = false
 end
 
-# Enable Captain features by default for all accounts
+# Willo feature configuration (enterprise directory removed - building our own features)
+# Note: Captain AI features removed (were in enterprise/ directory)
+# We'll build our own Willo AI features from scratch under MIT license
 InstallationConfig.find_or_create_by(name: 'ACCOUNT_LEVEL_FEATURE_DEFAULTS') do |config|
   config.value = [
-    { name: 'captain_integration', enabled: true },
-    { name: 'captain_integration_v2', enabled: true },
-    { name: 'disable_branding', enabled: true },
-    { name: 'audit_logs', enabled: true },
-    { name: 'sla', enabled: true },
-    { name: 'custom_roles', enabled: true }
+    { name: 'disable_branding', enabled: true }
   ]
   config.locked = false
 end
