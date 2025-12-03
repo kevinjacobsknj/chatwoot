@@ -232,14 +232,14 @@ const menuItems = computed(() => {
       ],
     },
     {
-      name: 'Captain',
-      icon: 'i-woot-captain',
-      label: t('SIDEBAR.CAPTAIN'),
+      name: 'WilloAI',
+      icon: 'i-lucide-sparkles',
+      label: t('SIDEBAR.WILLO_AI', 'Willo AI'),
       activeOn: ['captain_assistants_create_index'],
       children: [
         {
           name: 'FAQs',
-          label: t('SIDEBAR.CAPTAIN_RESPONSES'),
+          label: t('SIDEBAR.WILLO_AI_RESPONSES', 'FAQs'),
           activeOn: [
             'captain_assistants_responses_index',
             'captain_assistants_responses_pending',
@@ -250,7 +250,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Documents',
-          label: t('SIDEBAR.CAPTAIN_DOCUMENTS'),
+          label: t('SIDEBAR.WILLO_AI_DOCUMENTS', 'Documents'),
           activeOn: ['captain_assistants_documents_index'],
           to: accountScopedRoute('captain_assistants_index', {
             navigationPath: 'captain_assistants_documents_index',
@@ -258,7 +258,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Scenarios',
-          label: t('SIDEBAR.CAPTAIN_SCENARIOS'),
+          label: t('SIDEBAR.WILLO_AI_SCENARIOS', 'Scenarios'),
           activeOn: ['captain_assistants_scenarios_index'],
           to: accountScopedRoute('captain_assistants_index', {
             navigationPath: 'captain_assistants_scenarios_index',
@@ -266,7 +266,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Playground',
-          label: t('SIDEBAR.CAPTAIN_PLAYGROUND'),
+          label: t('SIDEBAR.WILLO_AI_PLAYGROUND', 'Playground'),
           activeOn: ['captain_assistants_playground_index'],
           to: accountScopedRoute('captain_assistants_index', {
             navigationPath: 'captain_assistants_playground_index',
@@ -274,7 +274,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Inboxes',
-          label: t('SIDEBAR.CAPTAIN_INBOXES'),
+          label: t('SIDEBAR.WILLO_AI_INBOXES', 'Inboxes'),
           activeOn: ['captain_assistants_inboxes_index'],
           to: accountScopedRoute('captain_assistants_index', {
             navigationPath: 'captain_assistants_inboxes_index',
@@ -282,7 +282,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Tools',
-          label: t('SIDEBAR.CAPTAIN_TOOLS'),
+          label: t('SIDEBAR.WILLO_AI_TOOLS', 'Tools'),
           activeOn: ['captain_tools_index'],
           to: accountScopedRoute('captain_assistants_index', {
             navigationPath: 'captain_tools_index',
@@ -290,7 +290,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Settings',
-          label: t('SIDEBAR.CAPTAIN_SETTINGS'),
+          label: t('SIDEBAR.WILLO_AI_SETTINGS', 'Settings'),
           activeOn: [
             'captain_assistants_settings_index',
             'captain_assistants_guidelines_index',

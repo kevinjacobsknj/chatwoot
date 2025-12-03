@@ -308,7 +308,16 @@
     "ACTIVE": "Active",
     "COMPANIES": "Companies",
     "ALL_COMPANIES": "All Companies",
-    "CAPTAIN": "Captain",
+    "WILLO_AI": "Willo AI",
+    "WILLO_AI_ASSISTANTS": "Assistants",
+    "WILLO_AI_DOCUMENTS": "Documents",
+    "WILLO_AI_RESPONSES": "FAQs",
+    "WILLO_AI_TOOLS": "Tools",
+    "WILLO_AI_SCENARIOS": "Scenarios",
+    "WILLO_AI_PLAYGROUND": "Playground",
+    "WILLO_AI_INBOXES": "Inboxes",
+    "WILLO_AI_SETTINGS": "Settings",
+    "CAPTAIN": "Willo AI",
     "CAPTAIN_ASSISTANTS": "Assistants",
     "CAPTAIN_DOCUMENTS": "Documents",
     "CAPTAIN_RESPONSES": "FAQs",
@@ -395,12 +404,12 @@
       "BUTTON_TXT": "Go to the billing portal"
     },
     "CAPTAIN": {
-      "TITLE": "Captain",
-      "DESCRIPTION": "Manage usage and credits for Captain AI.",
+      "TITLE": "Willo AI",
+      "DESCRIPTION": "Manage usage and credits for Willo AI.",
       "BUTTON_TXT": "Buy more credits",
       "DOCUMENTS": "Documents",
       "RESPONSES": "Responses",
-      "UPGRADE": "Captain is not available on the free plan, upgrade now to get access to assistants, copilot and more."
+      "UPGRADE": "Willo AI is not available on the free plan, upgrade now to get access to assistants, copilot and more."
     },
     "CHAT_WITH_US": {
       "TITLE": "Need help?",
