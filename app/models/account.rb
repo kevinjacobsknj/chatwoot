@@ -101,6 +101,11 @@ class Account < ApplicationRecord
   has_many :willo_services, class_name: 'Willo::Service', dependent: :destroy_async
   has_many :willo_client_preferences, class_name: 'Willo::ClientPreference', dependent: :destroy_async
   has_many :willo_inventory_items, class_name: 'Willo::InventoryItem', dependent: :destroy_async
+  has_many :willo_ai_assistants, class_name: 'WilloAi::Assistant', dependent: :destroy_async
+  has_many :willo_ai_documents, class_name: 'WilloAi::Document', dependent: :destroy_async
+  has_many :willo_ai_responses, class_name: 'WilloAi::Response', dependent: :destroy_async
+  has_many :willo_ai_scenarios, class_name: 'WilloAi::Scenario', dependent: :destroy_async
+  has_many :willo_ai_custom_tools, class_name: 'WilloAi::CustomTool', dependent: :destroy_async
 
   has_one_attached :contacts_export
 

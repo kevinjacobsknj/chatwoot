@@ -20,15 +20,13 @@ class RenameCaptainToWilloAi < ActiveRecord::Migration[7.1]
     rename_index :willo_ai_documents, 'index_captain_documents_on_external_link', 'index_willo_ai_documents_on_external_link'
     rename_index :willo_ai_documents, 'index_captain_documents_on_status', 'index_willo_ai_documents_on_status'
 
-    rename_index :willo_ai_inboxes, 'index_captain_inboxes_on_assistant_id', 'index_willo_ai_inboxes_on_assistant_id'
-    rename_index :willo_ai_inboxes, 'index_captain_inboxes_on_inbox_id', 'index_willo_ai_inboxes_on_inbox_id'
-    rename_index :willo_ai_inboxes, 'index_captain_inboxes_uniqueness', 'index_willo_ai_inboxes_uniqueness'
+    # Note: willo_ai_inboxes uses captain_assistant_id column (from original migration)
+    # The indexes keep their original names as they reference the original column names
 
     rename_index :willo_ai_scenarios, 'index_captain_scenarios_on_account_id', 'index_willo_ai_scenarios_on_account_id'
     rename_index :willo_ai_scenarios, 'index_captain_scenarios_on_assistant_id', 'index_willo_ai_scenarios_on_assistant_id'
 
+    # Note: custom_tools only has account_id, not assistant_id
     rename_index :willo_ai_custom_tools, 'index_captain_custom_tools_on_account_id', 'index_willo_ai_custom_tools_on_account_id'
-    rename_index :willo_ai_custom_tools, 'index_captain_custom_tools_on_assistant_id', 'index_willo_ai_custom_tools_on_assistant_id'
-    rename_index :willo_ai_custom_tools, 'index_captain_custom_tools_uniqueness', 'index_willo_ai_custom_tools_uniqueness'
   end
 end
